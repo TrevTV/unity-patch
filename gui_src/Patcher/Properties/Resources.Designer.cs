@@ -63,9 +63,9 @@ namespace Patcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap external_content_duckduckgo {
+        internal static System.Drawing.Bitmap UnityLogo {
             get {
-                object obj = ResourceManager.GetObject("external-content.duckduckgo", resourceCulture);
+                object obj = ResourceManager.GetObject("UnityLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
