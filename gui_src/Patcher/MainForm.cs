@@ -59,7 +59,10 @@ namespace Patcher
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.CreateNoWindow = true;
             processStartInfo.FileName = "Patcher.exe";
-            processStartInfo.Arguments = $"--windows --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath}";
+            if (forceCheck.Checked)
+                processStartInfo.Arguments = $"--windows --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath} --force";
+            else
+                processStartInfo.Arguments = $"--windows --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath}";
             #endregion
 
             #region Execution

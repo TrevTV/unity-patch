@@ -37,6 +37,7 @@
             this.lightRadio = new MetroFramework.Controls.MetroRadioButton();
             this.darkRadio = new MetroFramework.Controls.MetroRadioButton();
             this.consoleOutput = new MetroFramework.Controls.MetroTextBox();
+            this.forceCheck = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -190,11 +191,24 @@
             this.consoleOutput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.consoleOutput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // forceCheck
+            // 
+            this.forceCheck.AutoSize = true;
+            this.forceCheck.Location = new System.Drawing.Point(23, 124);
+            this.forceCheck.Name = "forceCheck";
+            this.forceCheck.Size = new System.Drawing.Size(85, 15);
+            this.forceCheck.Style = MetroFramework.MetroColorStyle.White;
+            this.forceCheck.TabIndex = 30;
+            this.forceCheck.Text = "Force Patch";
+            this.forceCheck.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.forceCheck.UseSelectable = true;
+            // 
             // PatcherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 256);
+            this.Controls.Add(this.forceCheck);
             this.Controls.Add(this.consoleOutput);
             this.Controls.Add(this.darkRadio);
             this.Controls.Add(this.lightRadio);
@@ -228,6 +242,7 @@
         private MetroFramework.Controls.MetroRadioButton lightRadio;
         private MetroFramework.Controls.MetroRadioButton darkRadio;
         private MetroFramework.Controls.MetroTextBox consoleOutput;
+        private MetroFramework.Controls.MetroCheckBox forceCheck;
     }
 }
 
