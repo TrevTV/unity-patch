@@ -33,12 +33,10 @@
             this.selectUnity = new MetroFramework.Controls.MetroButton();
             this.pathTextbox = new MetroFramework.Controls.MetroTextBox();
             this.unityVersions = new MetroFramework.Controls.MetroComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lightRadio = new MetroFramework.Controls.MetroRadioButton();
             this.darkRadio = new MetroFramework.Controls.MetroRadioButton();
             this.consoleOutput = new MetroFramework.Controls.MetroTextBox();
             this.forceCheck = new MetroFramework.Controls.MetroCheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // patchButton
@@ -121,16 +119,6 @@
             this.unityVersions.TabIndex = 22;
             this.unityVersions.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.unityVersions.UseSelectable = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Patcher.Properties.Resources.UnityLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(180, 18);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(108, 113);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
             // 
             // lightRadio
             // 
@@ -216,7 +204,6 @@
             this.Controls.Add(this.selectUnity);
             this.Controls.Add(this.pathTextbox);
             this.Controls.Add(this.unityVersions);
-            this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -226,7 +213,6 @@
             this.Style = MetroFramework.MetroColorStyle.White;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.PatcherFormLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,7 +224,6 @@
         public MetroFramework.Controls.MetroButton selectUnity;
         public MetroFramework.Controls.MetroTextBox pathTextbox;
         public MetroFramework.Controls.MetroComboBox unityVersions;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private MetroFramework.Controls.MetroRadioButton lightRadio;
         private MetroFramework.Controls.MetroRadioButton darkRadio;
         private MetroFramework.Controls.MetroTextBox consoleOutput;
