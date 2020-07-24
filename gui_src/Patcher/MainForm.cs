@@ -54,9 +54,14 @@ namespace Patcher
             else
                 Error("Theme has not been selected, please select one and try again.");
 
-            ShowConsole();
-
             #region StartInfo
+            var os = OSCheck();
+            if (os == null)
+            {
+                Error("Couldn't detect operating system");
+                return;
+            }
+
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.ErrorDialog = false;
             processStartInfo.UseShellExecute = false;
@@ -64,19 +69,17 @@ namespace Patcher
             processStartInfo.RedirectStandardInput = true;
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.CreateNoWindow = true;
-            processStartInfo.FileName = "Patcher.exe";
-            var os = OSCheck();
-
-            if (os == null)
-                Error("Couldn't detect operating system");
+            processStartInfo.FileName = os.Item2;
 
             if (forceCheck.Checked)
-                processStartInfo.Arguments = $"{os} --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath} --force";
+                processStartInfo.Arguments = $"{os.Item1} --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath} --force";
             else
-                processStartInfo.Arguments = $"{os} --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath}";
+                processStartInfo.Arguments = $"{os.Item1} --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath}";
             #endregion
 
             #region Execution
+            ShowConsole();
+
             Process process = new Process();
             process.StartInfo = processStartInfo;
             bool processStarted = process.Start();
@@ -106,15 +109,15 @@ namespace Patcher
                 Environment.Exit(0);
         }
         
-        private string OSCheck()
+        private Tuple<string, string> OSCheck()
         {
             var os = Environment.OSVersion;
             if (os.VersionString.ToString().ToLower().Contains("windows"))
-                return "--windows";
+                return Tuple.Create("--windows", "Patcher.exe");
             else if (os.VersionString.ToString().ToLower().Contains("linux"))
-                return "--linux";
+                return Tuple.Create("--linux", "Patcher");
             else if (os.VersionString.ToString().ToLower().Contains("mac"))
-                return "--mac";
+                return Tuple.Create("--mac", "Patcher");
             else
                 return null;
         }
