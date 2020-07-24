@@ -1,4 +1,6 @@
-﻿using MetroFramework;
+﻿using MaterialThemeCore;
+using MaterialThemeCore.MaterialControls;
+using MaterialThemeCore.Animations;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -6,13 +8,17 @@ using System.Windows.Forms;
 
 namespace Patcher
 {
-    public partial class PatcherForm : MetroFramework.Forms.MetroForm
+    public partial class PatcherForm : MaterialThemeForm
     {
         private string unityExePath;
 
         public PatcherForm()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialTheme.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialTheme.Themes.DARK;
+            materialSkinManager.MaterialColor = new MaterialColor(Primary.Grey700, Primary.Grey700, Primary.Orange700, Accent.Blue100, TextShade.WHITE);
         }
 
         private void PatcherFormLoad(object sender, EventArgs e)
@@ -90,14 +96,9 @@ namespace Patcher
 
         private void Error(string message)
         {
-            var msgBox = MetroMessageBox.Show(this, message, "An error has occured", MessageBoxButtons.OKCancel, 120);
+            var msgBox = MessageBox.Show(message, "An error has occured", MessageBoxButtons.OKCancel);
             if (msgBox == DialogResult.Cancel)
                 Environment.Exit(0);
-        }
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
