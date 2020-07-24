@@ -65,10 +65,15 @@ namespace Patcher
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.CreateNoWindow = true;
             processStartInfo.FileName = "Patcher.exe";
+            var os = OSCheck();
+
+            if (os == null)
+                Error("Couldn't detect operating system");
+
             if (forceCheck.Checked)
-                processStartInfo.Arguments = $"--windows --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath} --force";
+                processStartInfo.Arguments = $"{os} --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath} --force";
             else
-                processStartInfo.Arguments = $"--windows --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath}";
+                processStartInfo.Arguments = $"{os} --version={unityVersions.SelectedItem} --t={theme} --e={unityExePath}";
             #endregion
 
             #region Execution
@@ -99,6 +104,19 @@ namespace Patcher
             var msgBox = MessageBox.Show(message, "An error has occured", MessageBoxButtons.OKCancel);
             if (msgBox == DialogResult.Cancel)
                 Environment.Exit(0);
+        }
+        
+        private string OSCheck()
+        {
+            var os = Environment.OSVersion;
+            if (os.VersionString.ToString().ToLower().Contains("windows"))
+                return "--windows";
+            else if (os.VersionString.ToString().ToLower().Contains("linux"))
+                return "--linux";
+            else if (os.VersionString.ToString().ToLower().Contains("mac"))
+                return "--mac";
+            else
+                return null;
         }
     }
 }
